@@ -17,7 +17,8 @@ class ModeleLiaison extends Model
     {
         return $this->join('secteur sec', 'lia.nosecteur = sec.nosecteur', 'inner')
         ->join('port portdepart', 'lia.noport_depart = portdepart.noport', 'inner')
-        ->join('port portarrivee', 'lia.noport_arrivee = portarrivee.noport' 'inner');
+        ->join('port portarrivee', 'lia.noport_arrivee = portarrivee.noport' 'inner')
+        ->select('sec.nom, noliaison, ');
     }
-*/
+        */
 }
