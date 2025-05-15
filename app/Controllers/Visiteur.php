@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Models\ModeleClient;
+use App\Models\ModeleLiaison;
 helper(['assets']);
 
 class Visiteur extends BaseController
@@ -34,5 +35,13 @@ class Visiteur extends BaseController
             $data['valeurIdGenere'] = $modeleClient->insert($donneesAInserer);
             return view('visiteur/vue_ValidationCompte', $data);
         }
+    }
+    
+    public function liaisonsParSecteur()
+    {
+        $modeleLiaison = new ModeleLiaison();
+        $data['liaisons'] = $modeleLiaison->getAllLiaisonsParSecteur();
+        return view('Templates/Header')
+        . view('Visiteur/vue_LiaisonsParSecteur', $data);
     }
 }

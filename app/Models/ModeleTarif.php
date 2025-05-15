@@ -3,15 +3,15 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 
-class ModeleLiaison extends Model
+class ModeleTarif extends Model
 {
-    protected $table = 'liaison lia';
-    protected $primaryKey = 'noliaison';
+    protected $table = 'tarifer tar';
+    protected $primaryKey = 'noperiode, lettrecategorie, notype, noliaison';
 
     protected $useAutoIncrement = true;
     protected $returnType = 'object';
 
-    protected $allowedFields = ['noliaison', 'noport_depart', 'nosecteur','noport_arrivee', 'distance'];
+    protected $allowedFields = ['noperiode, lettrecategorie, notype, noliaison', 'tarif'];
 
     public function getAllLiaisonsParSecteur()
     {
