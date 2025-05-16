@@ -2,6 +2,7 @@
 namespace App\Controllers;
 use App\Models\ModeleClient;
 use App\Models\ModeleLiaison;
+use App\Models\ModeleTarif;
 helper(['assets']);
 
 class Visiteur extends BaseController
@@ -41,6 +42,14 @@ class Visiteur extends BaseController
     {
         $modeleLiaison = new ModeleLiaison();
         $data['liaisons'] = $modeleLiaison->getAllLiaisonsParSecteur();
+        return view('Templates/Header')
+        . view('Visiteur/vue_LiaisonsParSecteur', $data);
+    }
+
+    public function tarifsDUneLiaison()
+    {
+        $modeleTarif = new ModeleTarif();
+        $data['tarifs'] = $modeleTarif->getAllTarifsDUneLiaison();
         return view('Templates/Header')
         . view('Visiteur/vue_LiaisonsParSecteur', $data);
     }

@@ -13,12 +13,12 @@ class ModeleTarif extends Model
 
     protected $allowedFields = ['noperiode, lettrecategorie, notype, noliaison', 'tarif'];
 
-    public function getAllLiaisonsParSecteur()
+    public function getAllTarifsDUneLiaison()
     {
-        return $this->join('secteur sec', 'lia.nosecteur = sec.nosecteur', 'inner')
-        ->join('port portdepart', 'lia.noport_depart = portdepart.noport', 'inner')
-        ->join('port portarrivee', 'lia.noport_arrivee = portarrivee.noport', 'inner')
-        ->select('sec.nom, noliaison, distance, portdepart.nom as "portd", portarrivee.nom as "porta"')
+        return $this->join('type t', 'tar.lettrecategorie = t.lettrecategorie', 'tar.notype = t.notype', 'inner')
+        ->join('liaison lia', 'tar.noliaison = lia.noliaison', 'inner')
+        ->join('periode p', 'tar.noperiode = p.noperiode', 'inner')
+        ->select('tar.lettrecategorie, t.libelle, tar.notype, p.datedebut, p.datefin, tar.tarif')
         //->where(['portdepart.noport'=>'lia.noport_depart', 'portarrivee.noport'=>'lia.noport_arrivee'])
         ->get();
     }
