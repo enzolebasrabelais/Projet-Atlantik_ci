@@ -9,3 +9,4 @@ $routes->get('/', 'Home::index');
 $routes->get('accueil', 'Visiteur::pageDAccueil');
 $routes->match(['get', 'post'], 'creermoncompte', 'Visiteur::senregistrer');
 $routes->get('liaisonsparsecteur', 'Visiteur::liaisonsParSecteur');
+$routes->get('tarifsduneliaison', 'Visiteur::tarifsDUneLiaison');

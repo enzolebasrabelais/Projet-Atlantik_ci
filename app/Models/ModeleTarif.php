@@ -19,7 +19,6 @@ class ModeleTarif extends Model
         ->join('liaison lia', 'tar.noliaison = lia.noliaison', 'inner')
         ->join('periode p', 'tar.noperiode = p.noperiode', 'inner')
         ->select('tar.lettrecategorie, t.libelle, tar.notype, p.datedebut, p.datefin, tar.tarif')
-        //->where(['portdepart.noport'=>'lia.noport_depart', 'portarrivee.noport'=>'lia.noport_arrivee'])
         ->get();
     }
         
