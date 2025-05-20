@@ -3,6 +3,7 @@ namespace App\Controllers;
 use App\Models\ModeleClient;
 use App\Models\ModeleLiaison;
 use App\Models\ModeleTarif;
+use App\Models\ModeleSecteur;
 helper(['assets']);
 
 class Visiteur extends BaseController
@@ -52,6 +53,18 @@ class Visiteur extends BaseController
         $data['tarifs'] = $modeleTarif->getAllTarifsDUneLiaison();
         return view('Templates/Header')
         . view('Visiteur/vue_TarifsDUneLiaison', $data);
+    }
+
+    public function voirLesHoraires()
+    {
+        $modSecteur = new modeleSecteur();
+        $data['secteurs'] = $modSecteur->findAll();
+
+        //$modeleLiaison = new modeleLiaison()
+        //$data['liaisonsdusecteur'] = $modeleLiaison->where($condition)->first();
+
+        return view('Templates/Header')
+        . view('Visiteur/vue_HorairesDeTraversees', $data);
     }
 
     public function seConnecter()

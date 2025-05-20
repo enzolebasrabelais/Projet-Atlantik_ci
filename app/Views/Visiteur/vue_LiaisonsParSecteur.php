@@ -7,7 +7,7 @@ $table->setHeading(['Secteur', 'Code Liaison', 'Distance', 'Port de départ',
 
 echo $table->generate($liaisons);
 
-foreach ($liaisons as $uneLiaison)
+/*foreach ($liaisons as $uneLiaison)
 {?>
     <a href="<?php echo site_url('')?>"><?php $uneLiaison->noliaison;?></a><?php
-}
+}*/
