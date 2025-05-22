@@ -59,7 +59,8 @@ class Visiteur extends BaseController
     {
         $modSecteur = new modeleSecteur();
         $data['secteurs'] = $modSecteur->findAll();
-
+        $modeleLiaison = new ModeleLiaison();
+        $data['liaisonsbis'] = $modeleLiaison->getAllLiaisonsParSecteurBis();
         //$modeleLiaison = new modeleLiaison()
         //$data['liaisonsdusecteur'] = $modeleLiaison->where($condition)->first();
 
@@ -119,7 +120,7 @@ class Visiteur extends BaseController
 
         if ($utilisateurRetourne != null) {
             /* identifiant et mot de passe OK : identifiant et profil sont stockés en session */
-            $session->set('identifiant', $utilisateurRetourne->identifiant);
+            $session->set('identifiant', $utilisateurRetourne->MEL);
             // profil = "SuperAdministrateur ou "Administrateur"
             $data['Identifiant'] = $Identifiant;
             echo view('Templates/Header', $data);

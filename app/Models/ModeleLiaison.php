@@ -22,5 +22,14 @@ class ModeleLiaison extends Model
         //->where(['portdepart.noport'=>'lia.noport_depart', 'portarrivee.noport'=>'lia.noport_arrivee'])
         ->get();
     }
-        
+
+    public function getAllLiaisonsParSecteurBis($noSecteur)
+    {
+        return $this->join('secteur sec', 'lia.nosecteur = sec.nosecteur', 'inner')
+        ->join('port portdepart', 'lia.noport_depart = portdepart.noport', 'inner')
+        ->join('port portarrivee', 'lia.noport_arrivee = portarrivee.noport', 'inner')
+        ->where(['lia.nosecteur'=>$noSecteur])
+        ->select('sec.nom, noliaison, distance, portdepart.nom as "portd", portarrivee.nom as "porta"')
+        ->get();
+    }
 }
