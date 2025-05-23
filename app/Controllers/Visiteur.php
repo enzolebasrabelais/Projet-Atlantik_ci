@@ -55,17 +55,29 @@ class Visiteur extends BaseController
         . view('Visiteur/vue_TarifsDUneLiaison', $data);
     }
 
-    public function voirLesHoraires()
+    public function voirLesHoraires($nosecteur = null)
     {
-        $modSecteur = new modeleSecteur();
-        $data['secteurs'] = $modSecteur->findAll();
         $modeleLiaison = new ModeleLiaison();
-        $data['liaisonsbis'] = $modeleLiaison->getAllLiaisonsParSecteurBis();
+        if ($nosecteur === null)
+        {
+            $data['secteurs'] = $modeleLiaison->getAllLiaisonsParSecteurBis();
+
+            return view('Templates/Header')
+            . view('Visiteur/vue_HorairesDeTraversees', $data);
+        } else
+        {
+            $data['secteurs'] = $modeleLiaison->getAllLiaisonsParSecteurBis($nosecteur);
+
+            return view('Templates/Header')
+            . view('Visiteur/vue_HorairesDeTraversees', $data);
+        }
+        
+        
+        
         //$modeleLiaison = new modeleLiaison()
         //$data['liaisonsdusecteur'] = $modeleLiaison->where($condition)->first();
 
-        return view('Templates/Header')
-        . view('Visiteur/vue_HorairesDeTraversees', $data);
+        
     }
 
     public function seConnecter()

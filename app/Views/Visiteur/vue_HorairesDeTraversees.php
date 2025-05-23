@@ -1,8 +1,8 @@
 <?php
-foreach ($secteurs as $unSecteur) :
-    echo '<h3>'.anchor('horairesdetraversee/'.$unSecteur->NOSECTEUR, $unSecteur->NOM).'</h3>';
-    $noSecteur = $unSecteur->NOSECTEUR;
+foreach ($liaisonsbis as $uneliaison) :
+    echo '<h3>'.anchor('horairesdetraversee/'.$uneliaison->nosecteur, $uneliaison->nomsec).'</h3>';
 endforeach ?>
+
 <?php
 if ($noSecteur != null) {
 foreach ($liaisonsbis as $uneliaison) :
