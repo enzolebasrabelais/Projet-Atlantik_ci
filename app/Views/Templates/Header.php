@@ -12,7 +12,7 @@
         <a class="nav-link active" href="<?php echo site_url('meconnecter')?>">Se connecter</a>
       </li>
      <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('liaisonsparsecteur')?>">Link</a>
+        <a class="nav-link active" href="<?php echo site_url('liaisonsparsecteur')?>">Liaisons par secteur</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>

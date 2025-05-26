@@ -20,6 +20,25 @@ class Visiteur extends BaseController
             helper('form');
             return view('visiteur/vue_CreationCompte');
         }
+        
+        $reglesValidation = [ // Régles de validation
+            'txtNom' => 'required',
+            'txtPrenom' => 'required',
+            'txtAdresse' => 'required',
+            'txtCP' => 'required',
+            'txtVille' => 'required',
+            'txtMel' => 'required',
+            'txtMDP' => 'required',
+        ];
+
+        if (!$this->validate($reglesValidation)) {
+            /* formulaire non validé */
+            $data['TitreDeLaPage'] = "Saisie incorrecte";
+            return view('Templates/Header', $data)
+            . view('Visiteur/vue_CreationCompte'); // Renvoi formulaire de connexion
+
+        }
+
         else
         {
             $donneesAInserer = array(
@@ -28,8 +47,8 @@ class Visiteur extends BaseController
             'adresse' => $this->request->getPost('txtAdresse'),
             'codepostal' => $this->request->getPost('txtCP'),
             'ville' => $this->request->getPost('txtVille'),
-            'telfixe' => $this->request->getPost('txtTF'),
-            'telmobile' => $this->request->getPost('txtTM'),
+            'telephonefixe' => $this->request->getPost('txtTF'),
+            'telephonemobile' => $this->request->getPost('txtTM'),
             'mel' => $this->request->getPost('txtMel'),
             'motdepasse' => $this->request->getPost('txtMDP'),
             );
@@ -103,6 +122,7 @@ class Visiteur extends BaseController
             'txtIdentifiant' => 'required',
             'txtMotDePasse' => 'required',
         ];
+        
         if (!$this->validate($reglesValidation)) {
             /* formulaire non validé */
             $data['TitreDeLaPage'] = "Saisie incorrecte";
@@ -134,6 +154,7 @@ class Visiteur extends BaseController
         if ($utilisateurRetourne != null) {
             /* identifiant et mot de passe OK : identifiant et profil sont stockés en session */
             $session->set('identifiant', $utilisateurRetourne->MEL);
+            $session->set('connecte', 'Oui');
             // profil = "SuperAdministrateur ou "Administrateur"
             $data['Identifiant'] = $Identifiant;
             echo view('Templates/Header', $data);
