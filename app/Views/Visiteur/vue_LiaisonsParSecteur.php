@@ -11,8 +11,8 @@ echo "
 foreach ($liaisons as $uneLiaison)
 {
     echo "<TR>";
-    echo /*"<TD>".$uneLiaison->nomdusecteur."</TD>*/"<TD>"
-    .$uneLiaison->NoLiaison."</TD><TD>"
+    echo "<TD>".$uneLiaison->nomdusecteur."</TD><TD>"
+    .anchor('tarifsduneliaison/'.$uneLiaison->noliaison, $uneLiaison->noliaison)."</TD><TD>"
     .$uneLiaison->distance."</TD><TD>"
     .$uneLiaison->portd."</TD><TD>"
     .$uneLiaison->porta."</TD>";

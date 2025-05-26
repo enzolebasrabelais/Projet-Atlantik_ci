@@ -9,10 +9,10 @@
   <div class="container-fluid">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
+        <a class="nav-link active" href="<?php echo site_url('meconnecter')?>">Se connecter</a>
       </li>
      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="<?php echo site_url('liaisonsparsecteur')?>">Link</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>

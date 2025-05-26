@@ -6,3 +6,5 @@ $table->setHeading(['Lettre de catégorie', 'Libellé', 'n° Type', 'Début de l
 'Fin de la période', 'Tarif']); // entête tableau
 
 echo $table->generate($tarifs);
+
+var_dump($tarifs);

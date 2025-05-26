@@ -47,20 +47,21 @@ class Visiteur extends BaseController
         . view('Visiteur/vue_LiaisonsParSecteur', $data);
     }
 
-    public function tarifsDUneLiaison()
+    public function tarifsDUneLiaison($noliaison = null)
     {
         $modeleTarif = new ModeleTarif();
-        $data['tarifs'] = $modeleTarif->getAllTarifsDUneLiaison();
+        $data['tarifs'] = $modeleTarif->getAllTarifsDUneLiaison($noliaison);
         return view('Templates/Header')
         . view('Visiteur/vue_TarifsDUneLiaison', $data);
     }
 
     public function voirLesHoraires($nosecteur = null)
     {
+        $modSecteur = new ModeleSecteur();
         $modeleLiaison = new ModeleLiaison();
         if ($nosecteur === null)
         {
-            $data['secteurs'] = $modeleLiaison->findAll();
+            $data['secteurs'] = $modSecteur->findAll();
 
             return view('Templates/Header')
             . view('Visiteur/vue_HorairesDeTraversees', $data);
