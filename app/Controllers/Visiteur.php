@@ -60,7 +60,7 @@ class Visiteur extends BaseController
         $modeleLiaison = new ModeleLiaison();
         if ($nosecteur === null)
         {
-            $data['secteurs'] = $modeleLiaison->getAllLiaisonsParSecteurBis();
+            $data['secteurs'] = $modeleLiaison->findAll();
 
             return view('Templates/Header')
             . view('Visiteur/vue_HorairesDeTraversees', $data);
