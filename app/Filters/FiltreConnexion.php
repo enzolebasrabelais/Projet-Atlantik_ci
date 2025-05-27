@@ -4,7 +4,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
  
-class FiltreSuperAdministrateur implements FilterInterface
+class FiltreConnexion implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.

@@ -8,12 +8,15 @@ helper(['assets']);
 
 class Client extends BaseController
 {
+    
     public function modifcompte()
     {
+        $session = session();
+        helper(['form']);
         if (!$this->request->is('post'))
         {
-            helper('form');
-            return view('visiteur/vue_CreationCompte');
+            
+            return view('client/vue_ModificationCompte');
         }
         else
         {
@@ -29,8 +32,16 @@ class Client extends BaseController
             'motdepasse' => $this->request->getPost('txtMDP'),
             );
             $modeleClient = new ModeleClient();
-            $data['valeurIdGenere'] = $modeleClient->where()->update($donneesAInserer);
-            return view('visiteur/vue_ValidationCompte', $data);
+            $condition = ['mel'=>$session->get('identifiant')];
+            var_dump($condition); die();
+            $data['valeurIdGenere'] = $modeleClient->where($condition)->update($donneesAInserer);
+            return view('client/vue_ModificationValide', $data);
         }
+    }
+
+    public function seDeconnecter()
+    {
+        session()->destroy();
+        return redirect()->to('meconnecter');
     }
 }

@@ -1,5 +1,7 @@
 <h2><?php echo $TitreDeLaPage ?></h2>
 <?php
+$session = session();
+var_dump($session->get('identifiant'));
 if ($TitreDeLaPage=='Saisie incorrecte')
     echo service('validation')->listErrors();
 

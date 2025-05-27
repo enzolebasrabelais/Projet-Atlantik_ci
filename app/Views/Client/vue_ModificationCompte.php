@@ -1,7 +1,7 @@
 <html>
 <body>
 <?php
-    echo form_open('creermoncompte');
+    echo form_open('modifiermoncompte');
     echo csrf_field(); // Pour sécurité
     echo form_label('Nom : ','txtNom');
     echo form_input('txtNom','');

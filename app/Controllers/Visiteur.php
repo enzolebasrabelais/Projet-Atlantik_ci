@@ -15,9 +15,11 @@ class Visiteur extends BaseController
 
     public function senregistrer()
     {
+        helper(['form']);
+
         if (!$this->request->is('post'))
         {
-            helper('form');
+            
             return view('visiteur/vue_CreationCompte');
         }
         
