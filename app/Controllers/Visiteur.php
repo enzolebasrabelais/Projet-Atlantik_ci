@@ -42,19 +42,31 @@ class Visiteur extends BaseController
         else
         {
             $donneesAInserer = array(
-            'nom' => $this->request->getPost('txtNom'),
-            'prenom' => $this->request->getPost('txtPrenom'),
-            'adresse' => $this->request->getPost('txtAdresse'),
-            'codepostal' => $this->request->getPost('txtCP'),
-            'ville' => $this->request->getPost('txtVille'),
-            'telephonefixe' => $this->request->getPost('txtTF'),
-            'telephonemobile' => $this->request->getPost('txtTM'),
-            'mel' => $this->request->getPost('txtMel'),
-            'motdepasse' => $this->request->getPost('txtMDP'),
+            $n = 'nom' => $this->request->getPost('txtNom'),
+            $p ='prenom' => $this->request->getPost('txtPrenom'),
+            $a = 'adresse' => $this->request->getPost('txtAdresse'),
+            $c = 'codepostal' => $this->request->getPost('txtCP'),
+            $v = 'ville' => $this->request->getPost('txtVille'),
+            $tf = 'telephonefixe' => $this->request->getPost('txtTF'),
+            $tm = 'telephonemobile' => $this->request->getPost('txtTM'),
+            $m = 'mel' => $this->request->getPost('txtMel'),
+            $mdp = 'motdepasse' => $this->request->getPost('txtMDP'),
             );
+
+            
             $modeleClient = new ModeleClient();
             $data['valeurIdGenere'] = $modeleClient->insert($donneesAInserer);
-            return view('visiteur/vue_ValidationCompte', $data);
+            $condition = ['nom'=>$n, 'prenom'=>$p, 'adresse'=>$a, 'codepostal'=>$c, 'ville'=>$v, 'telephonefixe'=>$tf, 'telephonemobile'=>$tm, 'mel'=>$m, 'motdepasse'=>$mdp];
+            $utilisateurInsere = $modeleClient->where($condition)->first();
+
+            if (utilisateurInsere != null) {
+            return view('visiteur/vue_ValidationCompte');
+            }else {
+                /* identifiant et/ou mot de passe OK : on renvoie le formulaire  */
+                $data['TitreDeLaPage'] = "Identifiant ou/et Mot de passe inconnu(s)";
+                return view('Templates/Header', $data)
+                . view('Visiteur/vue_CreationCompte');
+            }
         }
     }
     
